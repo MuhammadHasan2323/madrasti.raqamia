@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap');
+
+@import "tailwindcss";
+
+body {
+  font-family: 'Cairo', sans-serif;
+  margin: 0;
+}
+
+/* Prevent horizontal scrollbar caused by overflowing elements */
+html, body {
+  overflow-x: hidden;
+}
+
+/* Container max-width for large screens */
+.container {
+  max-width: 1400px;
+}
+
+/* Animation Keyframes */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@media (max-width: 640px) {
+  .animate-float {
+    animation: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float {
+    animation: none;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Firefox scrollbar */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 #f1f1f1;
+}
+
+/* Modal Transitions */
+.modal {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
+}
+.modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+.modal-content {
+  transform: scale(0.95);
+  transition: transform 0.3s ease-in-out;
+}
+.modal.active .modal-content {
+  transform: scale(1);
+}
+
+/* Modal-specific scrollbar styling (RTL: scrollbar appears on left) */
+.modal-content {
+  direction: rtl; /* place scrollbar on left in most browsers */
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: #94a3b8 #f1f1f1; /* thumb, track for Firefox */
+}
+.modal-content::-webkit-scrollbar {
+  width: 10px;
+}
+.modal-content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 9999px;
+}
+.modal-content::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+  border-radius: 9999px;
+  border: 2px solid rgba(0,0,0,0);
+  background-clip: padding-box;
+}
+.modal-content::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
+}
+
+/* FAQ Transitions */
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+}
+.faq-icon {
+  transition: transform 0.3s ease-in-out;
+}
